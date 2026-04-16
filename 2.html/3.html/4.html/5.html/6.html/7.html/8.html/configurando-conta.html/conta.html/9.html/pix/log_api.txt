@@ -1,0 +1,557 @@
+[11/04/2026 13:51:23] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 13:51:23] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da51db65b17_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 13:51:23] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773479","id":"REF_69da51db65b17_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/b3b56762-cabd-40f0-8d5d-603bac3f4dc35204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***63040190","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 13:52:31] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 13:52:31] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da521f40416_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 13:52:31] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773495","id":"REF_69da521f40416_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/df55648c-8725-4674-835c-db8c3ef2b4a75204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***6304962E","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 13:53:06] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 13:53:06] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da5242c2cb7_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 13:53:07] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773514","id":"REF_69da5242c2cb7_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/8d766870-bbb5-431f-a247-42681c0bd9475204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***63045E0B","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 13:56:23] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 13:56:23] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da530782ed4_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 13:56:24] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773573","id":"REF_69da530782ed4_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/95461e41-f763-46fb-831e-3368b9faa9db5204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***63045128","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 13:56:41] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 13:56:41] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da53199192e_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 13:56:42] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773576","id":"REF_69da53199192e_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/03e2523b-d351-42d6-996d-6e1b6b3bdfa75204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***6304E319","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 13:57:59] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 13:57:59] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da536767ffa_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 13:57:59] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773597","id":"REF_69da536767ffa_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/04a69ce5-bae6-4bf6-957b-13f340a8d3325204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***6304B71D","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 13:58:14] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 13:58:14] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da5376d5fae_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 13:58:15] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773600","id":"REF_69da5376d5fae_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/ee137e46-5f08-4837-bee2-6cdbb74811bc5204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***63048EF3","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:12:58] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 14:12:58] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da56eabb22b_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 14:12:59] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773893","id":"REF_69da56eabb22b_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/c7a21b97-b6ff-46d1-97a2-ca207ea5e9135204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***63047B9C","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:13:06] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 14:13:06] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da56f24781d_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 14:13:06] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773895","id":"REF_69da56f24781d_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/2836504e-b2a9-481d-8aff-af39373930d15204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***63047C79","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:13:11] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 14:13:11] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da56f716c9d_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 14:13:11] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773896","id":"REF_69da56f716c9d_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/14c22062-a338-42a7-935c-e951e0f5f9a15204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***63041B66","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:14:54] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 14:14:54] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da575e48796_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 14:14:54] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6773925","id":"REF_69da575e48796_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/52a38b07-bcdc-4658-ae40-ad468e1ce5905204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***63046825","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:23:33] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 14:23:33] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da596533a22_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 14:23:33] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6774080","id":"REF_69da596533a22_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/cbf934fb-ec53-4b9c-b7ae-01c5bfc5fef25204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***6304F6EA","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:24:32] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 14:24:32] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da59a00f8c1_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 14:24:32] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6774103","id":"REF_69da59a00f8c1_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/ad3ef052-c59b-4b21-a9ab-700426f241925204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***6304AB38","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:44:40] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 2790,
+    "description": "Taxa de Libera\u00e7\u00e3o",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 14:44:40] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 2790,
+    "description": "Taxa de Libera\u00e7\u00e3o",
+    "reference": "REF_69da5e58b8f56_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 14:44:41] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6774476","id":"REF_69da5e58b8f56_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/38776cd7-e3a1-4b5d-a050-85a27928aeaf5204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***63041CB2","qr_code_base64":null,"amount":2790,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:49:31] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 14:49:31] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da5f7b324cb_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 14:49:31] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6774578","id":"REF_69da5f7b324cb_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/5a32fdd5-4b96-4b73-9b4e-4f17fd846e805204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***6304D3DC","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:49:41] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "CLIENTE",
+    "email": "cliente@email.com",
+    "phone": "(00) 00000-0000",
+    "document": "000.000.000-00"
+}
+
+[11/04/2026 14:49:41] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da5f8589944_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "CLIENTE",
+        "email": "cliente@email.com",
+        "phone": "00000000000",
+        "document": "00000000000"
+    }
+}
+
+[11/04/2026 14:49:42] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6774583","id":"REF_69da5f8589944_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/de739a10-8c8a-49cf-9e28-bc0358c11ff75204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***6304AA46","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:50:49] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 14:50:49] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da5fc9d5e31_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
+[11/04/2026 14:50:50] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6774618","id":"REF_69da5fc9d5e31_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/8f0a0543-6c08-478b-a1af-3e7feeee9a1f5204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***6304C71C","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:51:00] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Beatriz Valerio Dinoa Da Silva",
+    "email": "cliente@email.com",
+    "phone": "(00) 00000-0000",
+    "document": "17781413741"
+}
+
+[11/04/2026 14:51:00] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da5fd43bac8_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Beatriz Valerio Dinoa Da Silva",
+        "email": "cliente@email.com",
+        "phone": "00000000000",
+        "document": "17781413741"
+    }
+}
+
+[11/04/2026 14:51:00] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6774625","id":"REF_69da5fd43bac8_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/d20aa5d8-36bb-479d-a6aa-59d47f28cb545204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***630478E6","qr_code_base64":null,"amount":3889,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:51:25] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 2790,
+    "description": "Taxa de Libera\u00e7\u00e3o",
+    "step": 1,
+    "name": "Beatriz Valerio Dinoa Da Silva",
+    "email": "cliente@email.com",
+    "phone": "(00) 00000-0000",
+    "document": "17781413741"
+}
+
+[11/04/2026 14:51:25] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 2790,
+    "description": "Taxa de Libera\u00e7\u00e3o",
+    "reference": "REF_69da5fedafba8_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Beatriz Valerio Dinoa Da Silva",
+        "email": "cliente@email.com",
+        "phone": "00000000000",
+        "document": "17781413741"
+    }
+}
+
+[11/04/2026 14:51:26] --- RESPOSTA DA API PARADISE (HTTP 200) ---
+{"status":"success","transaction_id":"6774637","id":"REF_69da5fedafba8_STEP_1","qr_code":"00020101021226800014br.gov.bcb.pix2558qrcode.mkip.com.br\/v1\/fd861c97-b1d3-4fb0-8f9e-6e2787c5878f5204000053039865802BR5911MARKETPLACE6008SAOPAULO62070503***6304CC4F","qr_code_base64":null,"amount":2790,"acquirer":"ParadiseBank","attempts":1,"expires_at":null}
+
+[11/04/2026 14:53:47] --- DADOS RECEBIDOS DO JS ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "step": 1,
+    "name": "Dayvisson Wendell Almeida Da Silva",
+    "email": "dawdwa@gmail.com",
+    "phone": "17988260335",
+    "document": "50560302878"
+}
+
+[11/04/2026 14:53:47] --- PAYLOAD ENVIADO PARA PARADISE ---
+{
+    "amount": 3889,
+    "description": "Seguro Prestamista",
+    "reference": "REF_69da607b26dab_STEP_1",
+    "source": "api_externa",
+    "customer": {
+        "name": "Dayvisson Wendell Almeida Da Silva",
+        "email": "dawdwa@gmail.com",
+        "phone": "17988260335",
+        "document": "50560302878"
+    }
+}
+
