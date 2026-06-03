@@ -1,668 +1,1199 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
-  <!-- Meta Pixel Code -->
-<script async="" src="js/fbevents.js"></script><script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2403319806810510');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2403319806810510&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>iCred – Crédito Pessoal Pré-Aprovado</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --green: #22C55E;
-      --green-dark: #16A34A;
-      --green-light: #DCFCE7;
-      --green-subtle: #F0FDF4;
-      --bg: #F4F5F7;
-      --card: #FFFFFF;
-      --text: #111827;
-      --text-mid: #374151;
-      --text-light: #6B7280;
-      --border: #E5E7EB;
-      --border-light: #F3F4F6;
-      --radius: 18px;
-      --shadow: 0 4px 24px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-      --shadow-card: 0 -10px 40px rgba(0,0,0,0.1);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* =================== HEADER =================== */
-    .header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: #fff;
-      box-shadow: 0 1px 0 var(--border);
-      transition: box-shadow 0.3s;
-    }
-    .header.scrolled {
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    }
-    .header-inner {
-      max-width: 500px; margin: 0 auto; padding: 14px 20px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo {
-      display: flex; align-items: center; user-select: none; text-decoration: none;
-    }
-    .logo-cred {
-      font-family: 'Sora', sans-serif;
-      font-weight: 800; font-size: 20px; color: #111827;
-      letter-spacing: -0.5px; line-height: 1;
-    }
-    .logo-diamond {
-      width: 7px; height: 7px; background: #22C55E;
-      transform: rotate(45deg); margin: 0 8px;
-      border-radius: 1.5px; flex-shrink: 0;
-    }
-    .logo-on {
-      font-family: 'Sora', sans-serif;
-      font-weight: 800; font-size: 20px; color: #22C55E;
-      letter-spacing: -0.5px; line-height: 1;
-    }
-    .header-cta {
-      background: linear-gradient(135deg, #22C55E, #16A34A); color: white;
-      padding: 10px 22px; border-radius: 100px; text-decoration: none;
-      font-weight: 700; font-size: 14px; transition: all 0.3s;
-      box-shadow: 0 3px 12px rgba(34,197,94,0.35);
-    }
-    .header-cta:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(34,197,94,0.45); }
-
-    /* =================== HERO =================== */
-    .hero-banner {
-      position: relative;
-      background: linear-gradient(160deg, #064e3b 0%, #065f46 30%, #047857 60%, #059669 100%);
-      overflow: hidden; display: flex; align-items: flex-start;
-      justify-content: center; padding: 120px 24px 160px;
-    }
-    .hero-banner::after {
-      content: '';
-      position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
-      background: linear-gradient(to top, var(--bg), transparent);
-      z-index: 2;
-    }
-    .hero-decorations {
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      overflow: hidden; pointer-events: none; z-index: 1;
-    }
-    .money-float {
-      position: absolute; width: 50px; height: 50px;
-      animation: float 6s ease-in-out infinite; opacity: 0.15;
-      color: #34d399;
-    }
-    .money-float svg { width: 100%; height: 100%; stroke: currentColor; stroke-width: 1.5; fill: none; }
-    .money-float:nth-child(1) { top: 15%; left: 5%; animation-delay: 0s; width: 45px; height: 45px; }
-    .money-float:nth-child(2) { top: 25%; right: 8%; animation-delay: 1s; width: 60px; height: 60px; }
-    .money-float:nth-child(3) { bottom: 30%; left: 10%; animation-delay: 2s; width: 50px; height: 50px; }
-    .money-float:nth-child(4) { top: 40%; left: 20%; animation-delay: 0.5s; width: 35px; height: 35px; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
-    }
-    .hero-content { position: relative; z-index: 2; text-align: center; max-width: 600px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
-      color: #a7f3d0;
-      padding: 8px 16px; border-radius: 100px;
-      font-size: 13px; font-weight: 600; margin-bottom: 20px;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    .hero-badge svg { width: 16px; height: 16px; }
-    .hero-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(28px, 5vw, 42px); font-weight: 800; line-height: 1.1;
-      color: #fff; margin-bottom: 12px;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.2);
-    }
-    .hero-subtitle {
-      font-size: 15px; color: rgba(255,255,255,0.85); margin-bottom: 20px; font-weight: 500;
-    }
-    .hero-amount { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px; flex-direction: column; }
-    .hero-amount-label { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 500; }
-    .hero-amount-value {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(42px, 8vw, 60px); font-weight: 800; color: #4ade80; line-height: 1;
-      display: flex; align-items: flex-start;
-      text-shadow: 0 4px 30px rgba(74,222,128,0.3);
-    }
-    .hero-amount-value .currency { font-size: 0.4em; margin-right: 4px; margin-top: 0.15em; }
-
-    /* =================== MAIN CARD =================== */
-    .main-card-container { position: relative; z-index: 10; margin-top: -120px; padding: 0 16px 40px; }
-    .main-card {
-      background: var(--card); border-radius: 24px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
-      max-width: 500px; margin: 0 auto; overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.04);
-    }
-    .card-inner { padding: 32px 24px; }
-    .section-header { text-align: center; margin-bottom: 28px; }
-    .section-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px;
-      letter-spacing: -0.5px;
-    }
-    .section-subtitle { font-size: 14px; color: var(--text-mid); }
-
-    /* =================== BENEFITS =================== */
-    .benefits-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
-    .benefit-item {
-      display: flex; align-items: center; gap: 16px; padding: 16px;
-      background: #fff; border: 1px solid var(--border);
-      border-radius: 14px; transition: all 0.3s ease;
-    }
-    .benefit-item:hover { background: var(--green-subtle); border-color: var(--green); transform: translateX(4px); box-shadow: 0 4px 16px rgba(34,197,94,0.12); }
-    .benefit-icon {
-      width: 48px; height: 48px; min-width: 48px;
-      background: linear-gradient(135deg, #22C55E, #16A34A);
-      border-radius: 14px; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 14px rgba(34,197,94,0.35);
-    }
-    .benefit-icon svg { width: 24px; height: 24px; color: #fff; }
-    .benefit-content { flex: 1; }
-    .benefit-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-    .benefit-text { font-size: 13px; color: var(--text-light); }
-
-    /* =================== SIMULATOR =================== */
-    .simulator-section { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border: 1px solid rgba(34,197,94,0.15); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
-    .simulator-value { text-align: center; margin-bottom: 20px; }
-    .simulator-label { font-size: 13px; color: var(--green-dark); margin-bottom: 8px; font-weight: 600; }
-    .simulator-amount {
-      font-family: 'Outfit', sans-serif;
-      font-size: 40px; font-weight: 800; color: var(--green-dark); line-height: 1;
-    }
-    /* =================== CUSTOM SLIDER =================== */
-    .simulator-slider { margin-bottom: 20px; }
-    .custom-slider {
-      position: relative;
-      width: 100%;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      touch-action: none;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      -webkit-user-select: none;
-      cursor: pointer;
-    }
-    .slider-track {
-      position: absolute;
-      left: 0; right: 0;
-      height: 10px;
-      background: #e5e7eb;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-    .slider-progress {
-      height: 100%;
-      background: #22C55E;
-      border-radius: 5px;
-      width: 31%;
-    }
-    .slider-thumb {
-      position: absolute;
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 5px solid #22C55E;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-      left: 31%;
-      transform: translateX(-50%);
-      z-index: 2;
-      cursor: grab;
-    }
-    .slider-thumb:active, .slider-thumb.active {
-      cursor: grabbing;
-      box-shadow: 0 3px 20px rgba(34,197,94,0.45);
-      transform: translateX(-50%) scale(1.15);
-    }
-    .slider-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--text-light); font-weight: 500; }
-    .simulator-details { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .detail-box { background: #fff; padding: 14px; border-radius: 12px; text-align: center; border: 1px solid var(--border); }
-    .detail-label { font-size: 11px; color: var(--text-light); margin-bottom: 4px; display: block; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-    .detail-value { font-size: 16px; font-weight: 800; color: var(--text); }
-    .detail-value.highlight { color: var(--green); }
-
-    /* =================== CTA =================== */
-    .btn-cta {
-      width: 100%; background: linear-gradient(135deg, #22C55E, #16A34A);
-      color: white; padding: 18px; border: none; border-radius: 14px;
-      font-size: 17px; font-weight: 700; cursor: pointer; transition: all 0.3s;
-      font-family: inherit; display: flex; align-items: center; justify-content: center;
-      gap: 10px; box-shadow: 0 6px 24px rgba(34,197,94,0.4); text-decoration: none;
-      position: relative; overflow: hidden;
-    }
-    .btn-cta::before {
-      content:''; position:absolute; top:0; left:-100%;
-      width:100%; height:100%;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
-      animation:shimmer 3s infinite;
-    }
-    @keyframes shimmer{0%{left:-100%;}100%{left:100%;}}
-    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(34,197,94,0.5); }
-    .btn-cta svg { width: 20px; height: 20px; }
-
-    /* =================== TRUST =================== */
-    .trust-section { padding: 24px; border-top: 1px solid var(--border-light); }
-    .trust-badges { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
-    .trust-badge { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-light); font-weight: 500; }
-    .trust-badge svg { width: 18px; height: 18px; color: var(--green); }
-
-    /* =================== STATS =================== */
-    .stats-section { padding: 40px 16px; max-width: 500px; margin: 0 auto; }
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .stat-card {
-      background: #fff; padding: 20px 16px; border-radius: 16px;
-      text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      border: 1px solid var(--border);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(34,197,94,0.15); }
-    .stat-number { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: var(--green); line-height: 1; margin-bottom: 6px; }
-    .stat-label { font-size: 11px; color: var(--text-mid); font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
-
-    /* =================== TESTIMONIALS =================== */
-    .testimonials-section { padding: 0 16px 40px; max-width: 500px; margin: 0 auto; }
-    .testimonials-header { text-align: center; margin-bottom: 24px; }
-    .testimonials-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); }
-    .testimonial-card {
-      background: #fff; padding: 24px; border-radius: 16px; margin-bottom: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--green);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .testimonial-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
-    .testimonial-stars { display: flex; gap: 2px; margin-bottom: 12px; }
-    .testimonial-stars svg { width: 18px; height: 18px; fill: #FBBF24; }
-    .testimonial-text { font-size: 14px; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
-    .testimonial-author { display: flex; align-items: center; gap: 12px; }
-    .author-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--green-light);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; color: var(--green-dark); font-size: 16px;
-    }
-    .author-name { font-weight: 700; color: var(--text); font-size: 14px; }
-    .author-location { font-size: 12px; color: var(--text-light); }
-
-    /* =================== FOOTER =================== */
-    footer {
-      background: #fff; color: var(--text-light);
-      padding: 36px 24px 24px; text-align: center;
-      border-top: 1px solid var(--border);
-    }
-    .footer-logo-wrap {
-      display: flex; align-items: center; justify-content: center;
-      gap: 0; margin-bottom: 20px;
-    }
-    .footer-logo-wrap .logo-cred { font-size: 15px; color: var(--text-light); }
-    .footer-logo-wrap .logo-diamond { width: 5px; height: 5px; margin: 0 6px; background: var(--text-light); }
-    .footer-logo-wrap .logo-on { font-size: 15px; }
-    .footer-info { max-width: 380px; margin: 0 auto 20px; }
-    .footer-company { font-size: 13px; line-height: 1.6; margin-bottom: 12px; }
-    .footer-company strong { font-weight: 600; color: var(--green-dark); }
-    .footer-address { font-size: 12px; line-height: 1.6; margin-bottom: 16px; opacity: 0.85; }
-    .footer-contact { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-    .footer-link { color: var(--green); text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: opacity 0.2s; }
-    .footer-link:hover { opacity: 0.7; }
-    .footer-link svg { flex-shrink: 0; }
-    .footer-links { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
-    .footer-links a { color: var(--text-mid); text-decoration: none; font-size: 12px; transition: color 0.2s; font-weight: 500; }
-    .footer-links a:hover { color: var(--green); }
-    .footer-links span { opacity: 0.4; font-size: 12px; }
-    .footer-copyright { font-size: 11px; line-height: 1.6; opacity: 0.6; display: block; }
-    .footer-badges {
-      display: flex; align-items: center; justify-content: center; gap: 16px;
-      flex-wrap: wrap; margin-top: 12px;
-    }
-    .footer-badges span {
-      display: flex; align-items: center; gap: 4px;
-      font-size: 11px; color: var(--text-light); font-weight: 500;
-    }
-    .footer-badges svg { width: 14px; height: 14px; color: var(--green); }
-
-    /* =================== MODALS =================== */
-    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); }
-    .modal.active { display: flex; align-items: center; justify-content: center; padding: 20px; }
-    .modal-content { background: white; border-radius: 20px; width: 100%; max-width: 600px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2); }
-    .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 24px 24px 20px; border-bottom: 1px solid var(--border); }
-    .modal-header h2 { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin: 0; }
-    .modal-close { background: none; border: none; font-size: 32px; color: var(--text-light); cursor: pointer; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.2s; line-height: 1; padding: 0; }
-    .modal-close:hover { background: var(--border-light); color: var(--text); }
-    .modal-body { padding: 24px; overflow-y: auto; flex: 1; }
-    .modal-body h3 { font-size: 17px; font-weight: 700; color: var(--text); margin: 24px 0 12px; }
-    .modal-body h3:first-child { margin-top: 0; }
-    .modal-body p { font-size: 14px; line-height: 1.7; color: var(--text-light); margin-bottom: 16px; }
-    .modal-body ul { margin: 12px 0 16px 20px; padding: 0; }
-    .modal-body li { font-size: 14px; line-height: 1.7; color: var(--text-light); margin-bottom: 8px; }
-    .contact-info { display: flex; flex-direction: column; gap: 20px; }
-    .contact-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px; background: #FAFBFC; border: 1px solid var(--border); border-radius: 16px; transition: all 0.3s ease; }
-    .contact-item:hover { background: var(--green-subtle); border-color: rgba(34,197,94,0.2); }
-    .contact-icon { width: 48px; height: 48px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .contact-icon svg { color: #fff; }
-    .contact-item h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .contact-item p, .contact-item a { font-size: 14px; line-height: 1.6; color: var(--text-light); margin: 0; }
-    .contact-item a { text-decoration: none; transition: color 0.2s; }
-    .contact-item a:hover { color: var(--green); }
-    .contact-note { margin-top: 24px; padding: 20px; background: #FAFBFC; border: 1px solid var(--border); border-radius: 12px; }
-    .contact-note p { font-size: 13px; line-height: 1.6; color: var(--text-mid); margin-bottom: 8px; }
-    .contact-note p strong { color: var(--green-dark); }
-    .contact-note p:last-child { margin-bottom: 0; }
-
-    /* =================== ANIMATIONS =================== */
-    @keyframes slideUpAnim { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-badge { animation: slideUpAnim 0.6s ease forwards; animation-delay: 0.1s; opacity: 0; }
-    .hero-title { animation: slideUpAnim 0.6s ease forwards; animation-delay: 0.2s; opacity: 0; }
-    .hero-subtitle { animation: slideUpAnim 0.6s ease forwards; animation-delay: 0.3s; opacity: 0; }
-    .hero-amount { animation: slideUpAnim 0.6s ease forwards; animation-delay: 0.4s; opacity: 0; }
-    .main-card { animation: slideUpAnim 0.8s ease forwards; animation-delay: 0.5s; opacity: 0; }
-
-    @media (max-width: 480px) {
-      .hero-banner { min-height: 60vh; padding: 110px 20px 200px; }
-      .hero-title { font-size: 26px; }
-      .hero-amount-value { font-size: 48px; }
-      .main-card-container { margin-top: -160px; padding: 0 12px 32px; }
-      .card-inner { padding: 24px 20px; }
-      .section-title { font-size: 20px; }
-      .simulator-amount { font-size: 32px; }
-      .stats-grid { gap: 10px; }
-      .stat-number { font-size: 20px; }
-      .trust-badges { gap: 16px; }
-    }
-      .logo-wrap { display:flex; flex-direction:column; align-items:center; user-select:none; text-decoration:none; }
-    .logo-row { display:flex; align-items:center; }
-    .logo-tagline { font-family:'DM Sans','Poppins',sans-serif; font-weight:600; font-size:7px; letter-spacing:2.5px; text-transform:uppercase; color:#6B7280; margin-top:1px; }
-    .footer-tagline { font-family:'DM Sans','Poppins',sans-serif; font-weight:600; font-size:6px; letter-spacing:2px; text-transform:uppercase; color:#9CA3AF; margin-top:1px; }
-  </style>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melissa - Loja Oficial | Sapatos com até 97% OFF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e Variáveis */
+        :root {
+            --primary: #000000;
+            --secondary: #ff6fa3;
+            --accent: #ffcc66;
+            --light: #ffffff;
+            --dark: #000000;
+            --gray: #f5f5f5;
+            --text: #333333;
+            --shadow: 0 8px 30px rgba(0,0,0,0.12);
+            --radius: 12px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 94%;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--primary);
+            color: var(--light);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .search-bar {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 24px;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: var(--light);
+            font-size: 0.9rem;
+        }
+        
+        .search-bar input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .search-bar i {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .cart-btn {
+            position: relative;
+            cursor: pointer;
+            color: var(--light);
+            font-size: 1.3rem;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: var(--secondary);
+            color: var(--light);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin: 20px 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.03), rgba(255,255,255,0));
+            border-radius: var(--radius);
+            padding: 30px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            box-shadow: var(--shadow);
+            min-height: 320px;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-title {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            color: var(--text);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 28px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--light);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+        }
+        
+        /* Filtros */
+        .filters {
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .filter-select {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid #e0e0e0;
+            background: var(--light);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        /* Seções de Produtos */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0 20px;
+        }
+        
+        .section-title {
+            color: var(--dark);
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+        
+        .view-all {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .carousel-hint {
+            text-align: center;
+            color: var(--dark);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        
+        .carousel-hint i {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
+            40% {transform: translateX(5px);}
+            60% {transform: translateX(3px);}
+        }
+        
+        .products-carousel-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .products-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 20px;
+            padding: 12px 0 24px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        
+        .products-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Cartões de Produto */
+        .product-card {
+            flex: 0 0 auto;
+            width: 260px;
+            background: var(--light);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            scroll-snap-align: start;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+        }
+        
+        .discount-badge {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            background: linear-gradient(90deg, #ff3333, #ff6666);
+            color: var(--light);
+            padding: 3px 6px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.6rem;
+            box-shadow: 0 3px 8px rgba(255,51,51,0.18);
+            z-index: 2;
+            letter-spacing: 0.3px;
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+            cursor: pointer;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.6s ease;
+            padding: 16px;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 16px;
+        }
+        
+        .product-title {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1rem;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        
+        .product-description {
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .current-price {
+            font-weight: 900;
+            color: var(--dark);
+            font-size: 1.15rem;
+        }
+        
+        .original-price {
+            font-size: 0.9rem;
+            color: #777;
+            text-decoration: line-through;
+        }
+        
+        .size-selector {
+            margin-bottom: 12px;
+        }
+        
+        .size-selector select {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            background-color: var(--light);
+            font-size: 0.9rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .add-to-cart {
+            background: linear-gradient(90deg, var(--secondary), #ff9dc6);
+            color: var(--light);
+            padding: 9px 14px;
+            border-radius: 999px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255,111,163,0.3);
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding: 40px 0;
+            background: var(--gray);
+            color: var(--text);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        /* Modal do Carrinho */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 1200;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -50%;
+            width: 50%;
+            height: 100vh;
+            background: var(--light);
+            box-shadow: -6px 0 30px rgba(0,0,0,0.18);
+            z-index: 1300;
+            transition: right 0.32s cubic-bezier(.2,.9,.3,1);
+            display: flex;
+            flex-direction: column;
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+        }
+        
+        .cart-modal.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            padding: 18px;
+            background: var(--primary);
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-top-left-radius: 16px;
+        }
+        
+        .cart-body {
+            padding: 18px;
+            flex: 1;
+            overflow: auto;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 12px;
+            border-radius: 10px;
+            background: var(--light);
+            margin-bottom: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+        }
+        
+        .cart-item img {
+            width: 80px;
+            height: 70px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-info h4 {
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        
+        .cart-price {
+            color: var(--dark);
+            font-weight: 800;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .quantity-controls button {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            border: none;
+            background: #f0f0f0;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        
+        .remove-btn {
+            background: transparent;
+            border: none;
+            color: #c94b4b;
+            cursor: pointer;
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+        
+        .cart-footer {
+            padding: 18px;
+            border-top: 1px solid #f0f0f0;
+            position: sticky;
+            bottom: 0;
+            background: var(--light);
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 16px;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            background: var(--primary);
+            color: var(--light);
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .checkout-note {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-top: 8px;
+            text-align: center;
+        }
+        
+        /* Modal de Zoom para Imagens */
+        .zoom-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1400;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .zoom-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .zoom-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .zoom-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .close-zoom {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .cart-modal {
+                width: 60%;
+                right: -60%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cart-modal {
+                width: 75%;
+                right: -75%;
+            }
+            
+            .hero {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
+            .search-bar {
+                order: 3;
+                margin: 15px 0 0;
+                max-width: 100%;
+            }
+            
+            .filters {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 720px) {
+            .cart-modal {
+                width: 85%;
+                right: -85%;
+            }
+            
+            .product-card {
+                width: 220px;
+            }
+            
+            .product-image {
+                height: 210px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cart-modal {
+                width: 90%;
+                right: -90%;
+            }
+            
+            .product-card {
+                width: 200px;
+            }
+            
+            .product-image {
+                height: 190px;
+            }
+            
+            .product-info {
+                padding: 12px;
+            }
+            
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="header" id="header">
-    <div class="header-inner">
-      <img src="images/sicoob-logo-1.png" alt="iCred" style="height:36px;width:auto;">
-      <a href="#simulador" class="header-cta">Simular</a>
-    </div>
-  </header>
-
-  <section class="hero-banner">
-    <div class="hero-decorations">
-      <span class="money-float"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"></path></svg></span>
-      <span class="money-float"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"></path></svg></span>
-      <span class="money-float"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"></path></svg></span>
-      <span class="money-float"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"></path></svg></span>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        Crédito Pré-Aprovado
-      </div>
-      <h1 class="hero-title">Crédito Pessoal<br>na Sua Conta</h1>
-      <p class="hero-subtitle">Dinheiro rápido, sem burocracia e com as melhores taxas</p>
-      <div class="hero-amount">
-        <span class="hero-amount-label">Limite de até</span>
-        <div class="hero-amount-value"><span class="currency">R$</span>30.000</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="main-card-container">
-    <div class="main-card">
-      <div class="card-inner">
-        <div class="section-header">
-          <h2 class="section-title">Vantagens Exclusivas</h2>
-          <p class="section-subtitle">Por que milhares escolhem a iCred</p>
-        </div>
-        <div class="benefits-list">
-          <div class="benefit-item">
-            <div class="benefit-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
-            <div class="benefit-content"><div class="benefit-title">Crédito na Hora</div><div class="benefit-text">Aprovação em minutos e dinheiro em até 24h</div></div>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-            <div class="benefit-content"><div class="benefit-title">Taxas a partir de 0,81%</div><div class="benefit-text">As menores taxas do mercado garantidas</div></div>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
-            <div class="benefit-content"><div class="benefit-title">100% Seguro</div><div class="benefit-text">Processo digital protegido e regulamentado</div></div>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg></div>
-            <div class="benefit-content"><div class="benefit-title">Sem Fiador</div><div class="benefit-text">Sem burocracia, sem garantias exigidas</div></div>
-          </div>
-        </div>
-        <div class="simulator-section" id="simulador">
-          <div class="simulator-value">
-            <div class="simulator-label">Simule seu empréstimo</div>
-            <div class="simulator-amount" id="loanAmount">R$ 10.000</div>
-          </div>
-          <div class="simulator-slider">
-            <div class="custom-slider" id="customSlider">
-              <div class="slider-track">
-                <div class="slider-progress" id="sliderProgress" style="width: 31.0345%;"></div>
-              </div>
-              <div class="slider-thumb" id="sliderThumb" style="left: 31.0345%;"></div>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">melissa<span></span></div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar produtos..." id="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                
+                <div class="header-icons">
+                    <div id="cart-icon" class="cart-btn" aria-label="Abrir carrinho">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div class="cart-count" id="cart-count">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="slider-labels"><span>R$ 1.000</span><span>R$ 30.000</span></div>
-          </div>
-          <div class="simulator-details">
-            <div class="detail-box"><span class="detail-label">Parcelas</span><span class="detail-value" id="installments">120x R$ 131</span></div>
-            <div class="detail-box"><span class="detail-label">Taxa</span><span class="detail-value highlight">0,81% a.m.</span></div>
-          </div>
         </div>
-        <a href="2.html" class="btn-cta" id="btnSimulate" onclick="event.preventDefault();const p=new URLSearchParams(window.location.search);window.location.href='2.html'+(p.toString()?'?'+p:'');">
+    </header>
 
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-          Solicitar Agora
-        </a>
-      </div>
-      <div class="trust-section">
-        <div class="trust-badges">
-          <div class="trust-badge"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>Dados protegidos</div>
-          <div class="trust-badge"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>Banco Central</div>
-          <div class="trust-badge"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>+500 mil clientes</div>
+    <main class="container">
+        <section class="hero" aria-label="Destaque">
+            <div class="hero-content">
+                <h1 class="hero-title">MODELOS COM MAIS DE 90% DE DESCONTO</h1>
+                <p class="hero-subtitle">💖 MELISSALE: Cupom TUDO9 aplicado! Frete grátis para todo Brasil</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="scrollToProducts()">Ver Produtos</button>
+                    <button class="btn btn-secondary" onclick="openCart()">Meu Carrinho</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://ansiosasonline.com.br/cdn/shop/files/Banner_Mobile_Cozy_M_Lover_Platform_Ansiosas_Online_Melissa_7bb38a0c-7565-4b5d-b45e-c532155d367c.png?format=pjpg&v=1758317862&width=1100" alt="Sapatos Melissa em destaque">
+            </div>
+        </section>
+
+        <div class="filters">
+            <div class="filter-group">
+                <span class="filter-label">Filtrar por:</span>
+                <select class="filter-select" id="category-filter">
+                    <option value="all">Todas as categorias</option>
+                    <option value="sandalia">Sandálias</option>
+                    <option value="rasteirinha">Rasteirinhas</option>
+                    <option value="sapato">Sapatos</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <span class="filter-label">Ordenar por:</span>
+                <select class="filter-select" id="sort-filter">
+                    <option value="featured">Mais vendidos</option>
+                    <option value="newest">Mais recentes</option>
+                    <option value="price-low">Menor preço</option>
+                    <option value="price-high">Maior preço</option>
+                </select>
+            </div>
         </div>
-      </div>
+
+        <section id="products-section">
+            <div class="section-header">
+                <h2 class="section-title">Mais Vendidos</h2>
+                <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="carousel-hint">
+                <i class="fas fa-arrow-right"></i>
+                <span>Arraste para o lado para ver mais produtos</span>
+            </div>
+
+            <div class="products-carousel-container">
+                <div class="products-carousel" id="best-sellers-carousel"></div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Novidades</h2>
+                <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="carousel-hint">
+                <i class="fas fa-arrow-right"></i>
+                <span>Arraste para o lado para ver mais produtos</span>
+            </div>
+
+            <div class="products-carousel-container">
+                <div class="products-carousel" id="new-arrivals-carousel"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Nossas Lojas</a></li>
+                        <li><a href="#">Trabalhe Conosco</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Ajuda</h3>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Como Comprar</a></li>
+                        <li><a href="#">Trocas e Devoluções</a></li>
+                        <li><a href="#">Formas de Pagamento</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Atendimento</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@usarmelissabr.com</li>
+                        <li><i class="fas fa-phone"></i> (11) 4004-1822</li>
+                        <li><i class="fas fa-clock"></i> Seg a Sex: 9h às 18h</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Cadastre-se e receba ofertas exclusivas</p>
+                    <div class="search-bar" style="margin-top: 10px;">
+                        <input type="text" placeholder="Seu e-mail">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 Melissa - Loja Oficial | Todos os direitos reservados. | CNPJ: 89.850.341/0001-60</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay & Carrinho -->
+    <div id="overlay" class="overlay"></div>
+    <aside id="cart-modal" class="cart-modal" aria-hidden="true">
+        <div class="cart-header">
+            <strong>Seu Carrinho</strong>
+            <button id="close-cart" aria-label="Fechar" style="background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer">&times;</button>
+        </div>
+        <div class="cart-body" id="cart-items"></div>
+        <div class="cart-footer">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                <div style="font-weight:800">Total</div>
+                <div id="cart-total" style="font-weight:900;color:var(--dark)">R$ 0,00</div>
+            </div>
+            <button id="checkout" class="checkout-btn">Finalizar Compra com PIX</button>
+            <div class="checkout-note">Clique em finalizar para pagar com PIX.</div>
+        </div>
+    </aside>
+    
+    <!-- Modal de Zoom para Imagens -->
+    <div id="zoom-modal" class="zoom-modal">
+        <div class="zoom-content">
+            <button id="close-zoom" class="close-zoom">&times;</button>
+            <img id="zoom-image" src="" alt="Imagem ampliada">
+        </div>
     </div>
-  </div>
 
-  <section class="stats-section">
-    <div class="stats-grid">
-      <div class="stat-card"><div class="stat-number">500K+</div><div class="stat-label">Clientes</div></div>
-      <div class="stat-card"><div class="stat-number">24h</div><div class="stat-label">Aprovação</div></div>
-      <div class="stat-card"><div class="stat-number">120x</div><div class="stat-label">Parcelas</div></div>
-    </div>
-  </section>
+    <script>
+        // DADOS DOS PRODUTOS - COM TODOS OS NOVOS MODELOS ADICIONADOS
+        const products = [
+            // ===== MAIS VENDIDOS EXISTENTES =====
+            { id: "p1", name: "Melissa Free Platform Thong (BRANCO)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://cdn.shopify.com/s/files/1/0938/5069/8019/files/cor.36088.36088BE88712_o.webp?v=1745920544", category: "sandalia", featured: true },
+            { id: "p2", name: "Melissa Free Platform Thong (PRETO)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://cdn.shopify.com/s/files/1/0938/5069/8019/files/cor.36088.36088BE88612_o.webp?v=1745920408", category: "sandalia", featured: true },
+            { id: "p3", name: "Melissa Free Platform Slide Glitter (PRATA)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://images.tcdn.com.br/img/img_prod/993109/melissa_free_platform_slide_glitter_cinza_71875_1_32296e270b39c5a26a0752a3ad69d310.jpg", category: "sandalia", featured: true },
+            { id: "p4", name: "Melissa Free Platform Slide (BEGE CLARO)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://cdn.shopify.com/s/files/1/0938/5069/8019/files/cor.35859.35859AS38412_o.webp?v=1745888594", category: "sandalia", featured: true },
+            { id: "p20", name: "Melissa Pump Platform (BRANCA)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 179.90, image: "https://wheat-scorpion-764395.hostingersite.com/ww.melissa.com.br.jpeg", category: "sandalia", featured: true },
+            { id: "p21", name: "Melissa Free Thong Wedge (LILÁS)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 169.90, image: "https://wheat-scorpion-764395.hostingersite.com/knhjk(1).png", category: "sandalia", featured: true },
+            { id: "p22", name: "Melissa Up Platform (CARAMELO)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 189.90, image: "https://wheat-scorpion-764395.hostingersite.com/Gemini_Generated_Image_y4oq53y4oq53y4oq%20(1).png", category: "sandalia", featured: true },
+            { id: "p23", name: "Melissa Edge (PRETA)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 199.90, image: "https://dlzpblyjxiqfa.cloudfront.net/2243447975/products/woj84g1cjuome0fpdliunpdnc", category: "sandalia", featured: true },
+            { id: "p12", name: "Melissa Free Muse Platform", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://meninashoes.vtexassets.com/arquivos/ids/532588-1200-1200?v=638935618711630000&width=1200&height=1200&aspect=true", category: "rasteirinha", featured: true },
+            
+            // ===== NOVOS MODELOS ADICIONADOS (MAIS VENDIDOS) =====
+            { id: "p30", name: "Melissa Free Platform Thong", description: "ESTOQUE LIMITADO - Preto", price: 9.99, originalPrice: 159.90, image: "https://images.tcdn.com.br/img/img_prod/1399296/melissa_free_platform_thong_59_5875_1_20251028172342_d70b565f3583.jpg", category: "sandalia", featured: true },
+            { id: "p31", name: "Melissa Free Line Platform", description: "ESTOQUE LIMITADO - Preto", price: 9.99, originalPrice: 159.90, image: "https://images.tcdn.com.br/img/img_prod/1399296/melissa_free_line_platform_107_4033_1_20250820231059_839794735e27.jpg", category: "sandalia", featured: true },
+            { id: "p32", name: "Melissa Free Line Platform", description: "ESTOQUE LIMITADO - Bege/Nude", price: 9.99, originalPrice: 159.90, image: "https://images.tcdn.com.br/img/img_prod/1399296/melissa_free_line_platform_107_2_cba0127c310cafbd4c30bd56e81cae31.jpg", category: "sandalia", featured: true },
+            { id: "p33", name: "Melissa Free Line Platform (BN315)", description: "ESTOQUE LIMITADO - Bege", price: 9.99, originalPrice: 159.90, image: "https://meninashoes.vtexassets.com/arquivos/ids/493142/37824-Melissa-Free-Line-Platform-Cor-BN315---BEGE-variacao-3.jpg.jpg", category: "sandalia", featured: true },
+            { id: "p34", name: "Melissa Free Platform Slide", description: "ESTOQUE LIMITADO - Preto", price: 9.99, originalPrice: 159.90, image: "https://cloviscalcados.vteximg.com.br/arquivos/ids/1314537/Melissa-Free-Platform-Slide-35859-0855859_008-01.jpg", category: "sandalia", featured: true },
+            { id: "p35", name: "Melissa Platform Slide", description: "ESTOQUE LIMITADO - Lilás/Roxo", price: 9.99, originalPrice: 159.90, image: "https://cdn.awsli.com.br/2503/2503823/produto/297486546/6081-19306-fla7iv73un.jpg", category: "sandalia", featured: true },
+            { id: "p36", name: "Melissa Free Platform", description: "ESTOQUE LIMITADO - Branco/Off-white", price: 9.99, originalPrice: 159.90, image: "https://meninashoes.vtexassets.com/arquivos/ids/534969-1200-1200?v=638950134693470000", category: "sandalia", featured: true },
+            { id: "p37", name: "Melissa Platform Slide", description: "ESTOQUE LIMITADO - Preto", price: 9.99, originalPrice: 159.90, image: "https://acdn-us.mitiendanube.com/stores/970/787/products/img_6325-8549c172a6f25c41ac17745313753036-1024-1024.webp", category: "sandalia", featured: true },
+            { id: "p38", name: "Melissa Party Heel", description: "ESTOQUE LIMITADO - Nude/Bege rosado", price: 9.99, originalPrice: 199.90, image: "https://cloviscalcados.vteximg.com.br/arquivos/ids/1570690/Melissa-Party-Heel-33818-0853818_096-02.jpg", category: "sandalia", featured: true },
+            { id: "p39", name: "Melissa Party Heel", description: "ESTOQUE LIMITADO - Rosa", price: 9.99, originalPrice: 199.90, image: "https://cloviscalcados.vteximg.com.br/arquivos/ids/1570665/Melissa-Party-Heel-33818-0853818_050-01.jpg", category: "sandalia", featured: true },
+            { id: "p40", name: "Melissa Fashion Heel", description: "ESTOQUE LIMITADO - Preto", price: 9.99, originalPrice: 199.90, image: "https://n.nordstrommedia.com/id/sr3/ac62cf71-78c5-4d3a-b8c7-427945847923.jpeg", category: "sandalia", featured: true },
+            
+            // ===== NOVIDADES EXISTENTES =====
+            { id: "p7", name: "Melissa Free Platform Slide (VERMELHO)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://cdn.shopify.com/s/files/1/0938/5069/8019/files/cor.35859.35859BC20212_o.webp?v=1745888637", category: "sandalia", newArrival: true },
+            { id: "p8", name: "Melissa Free Platform Slide (PRETO)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://cdn.shopify.com/s/files/1/0938/5069/8019/files/cor.35859.35859AS38312_o.webp?v=1745888564", category: "sandalia", newArrival: true },
+            { id: "p9", name: "Melissa Kick Off Sandal (BEGE)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://cdn.shopify.com/s/files/1/0938/5069/8019/files/cor.32823.32823BA67110_o.webp?v=1745886140", category: "sandalia", newArrival: true },
+            { id: "p10", name: "Melissa Towny (VERDE)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://cdn.shopify.com/s/files/1/0938/5069/8019/files/cor.35964.35964BD58910_o.webp?v=1745899239", category: "sapato", newArrival: true },
+            { id: "p24", name: "Melissa Kick Off Sandal (BRANCA)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://wheat-scorpion-764395.hostingersite.com/Gemini_Generated_Image_a7is1a7is1a7is1a-removebg-preview.png", category: "sandalia", newArrival: true },
+            { id: "p25", name: "Melissa Kick Off Sandal (MARROM)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://wheat-scorpion-764395.hostingersite.com/Gemini_Generated_Image_b44mpkb44mpkb44m%20(1).png", category: "sandalia", newArrival: true },
+            { id: "p26", name: "Melissa Edge (TRANSLÚCIDA)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 199.90, image: "https://dlzpblyjxiqfa.cloudfront.net/2243447975/products/2jocbgrzu9uik3wsywpspbah1", category: "sandalia", newArrival: true },
+            { id: "p11", name: "Melissa Cozy M Lover Platform (MARROM)", description: "ESTOQUE LIMITADO", price: 9.99, originalPrice: 159.90, image: "https://melisseiras.vtexassets.com/arquivos/ids/541086-1200-1200?v=638990831067800000&width=1200&height=1200&aspect=true", category: "sapato", newArrival: true },
+            
+            // ===== NOVOS MODELOS ADICIONADOS (NOVIDADES) =====
+            { id: "p50", name: "Melissa Kick Off Sandal", description: "ESTOQUE LIMITADO - Vermelho", price: 9.99, originalPrice: 159.90, image: "https://meninashoes.vtexassets.com/arquivos/ids/435473/32823-Melissa-Kick-Off-Sandal-Vermelho-Variacao3.jpg", category: "sandalia", newArrival: true },
+            { id: "p51", name: "Melissa Free Platform", description: "ESTOQUE LIMITADO - Bege claro/Off-white", price: 9.99, originalPrice: 159.90, image: "https://meninashoes.vtexassets.com/arquivos/ids/535001-1200-1200?v=638950195420570000", category: "sandalia", newArrival: true }
+        ];
 
-  <section class="testimonials-section">
-    <div class="testimonials-header"><h3 class="testimonials-title">O que dizem nossos clientes</h3></div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars"><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
-      <p class="testimonial-text">"Consegui meu empréstimo em menos de 24 horas! O processo foi super simples e a taxa é a melhor que encontrei. Recomendo demais!"</p>
-      <div class="testimonial-author"><div class="author-avatar">M</div><div><div class="author-name">Maria Silva</div><div class="author-location">São Paulo, SP</div></div></div>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars"><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
-      <p class="testimonial-text">"Já tentei em vários bancos e sempre tinha muita burocracia. Aqui foi diferente! Tudo online, rápido e transparente."</p>
-      <div class="testimonial-author"><div class="author-avatar">J</div><div><div class="author-name">João Santos</div><div class="author-location">Rio de Janeiro, RJ</div></div></div>
-    </div>
-  </section>
+        // STATE
+        let cart = [];
+        const overlay = document.getElementById('overlay');
+        const cartModal = document.getElementById('cart-modal');
+        const cartCount = document.getElementById('cart-count');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalEl = document.getElementById('cart-total');
+        const zoomModal = document.getElementById('zoom-modal');
+        const zoomImage = document.getElementById('zoom-image');
+        const closeZoom = document.getElementById('close-zoom');
+        const bestSellersCarousel = document.getElementById('best-sellers-carousel');
+        const newArrivalsCarousel = document.getElementById('new-arrivals-carousel');
+        const searchInput = document.getElementById('search-input');
+        const categoryFilter = document.getElementById('category-filter');
+        const sortFilter = document.getElementById('sort-filter');
+        
+        const IRONPAY_LINK = 'https://compraonlinesegurada.org.ua/c/eaccfef385';
 
-  <footer>
-    <div class="footer-logo-wrap"><img src="images/sicoob-logo-1.png" alt="iCred" style="height:24px;width:auto;"></div>
-    <div class="footer-info">
-      <p class="footer-company"><strong>Banco Cooperativo Sicoob S.A.</strong><br>CNPJ: 02.038.232/0001-64</p>
-      <p class="footer-address">São Paulo, SP – CEP 01310-200</p>
-      <div class="footer-links">
-        <a href="#" onclick="openModal('termos'); return false;">Termos de Uso</a><span>•</span>
-        <a href="#" onclick="openModal('privacidade'); return false;">Política de Privacidade</a><span>•</span>
-        <a href="#" onclick="openModal('contato'); return false;">Contato</a>
-      </div>
-    </div>
-    <div class="footer-badges">
-      <span><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>SSL Seguro</span>
-      <span><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>Dados protegidos</span>
-      <span><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>Instituição regulada</span>
-    </div>
-    <small class="footer-copyright">© 2026 Banco Cooperativo Sicoob S.A.</small>
-  </footer>
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            setupEventListeners();
+        });
 
-  <div id="modal-termos" class="modal"><div class="modal-content"><div class="modal-header"><h2>Termos de Uso</h2><button class="modal-close" onclick="closeModal('termos')">×</button></div><div class="modal-body"><h3>1. Aceitação dos Termos</h3><p>Ao acessar e utilizar os serviços da Sicoob, você concorda com estes Termos de Uso.</p><h3>2. Serviços Oferecidos</h3><p>A iCred é uma instituição financeira digital que oferece serviços de empréstimo pessoal com aprovação rápida e processo 100% online.</p><h3>3. Elegibilidade</h3><ul><li>Ser maior de 18 anos</li><li>Possuir CPF válido</li><li>Ter conta bancária ativa em seu nome</li></ul></div></div></div>
-  <div id="modal-privacidade" class="modal"><div class="modal-content"><div class="modal-header"><h2>Política de Privacidade</h2><button class="modal-close" onclick="closeModal('privacidade')">×</button></div><div class="modal-body"><h3>1. Coleta de Dados</h3><p>A iCred coleta dados pessoais, de contato, financeiros e de navegação.</p><h3>2. Seus Direitos (LGPD)</h3><ul><li>Acessar seus dados pessoais</li><li>Corrigir dados incompletos</li><li>Solicitar exclusão de dados</li></ul></div></div></div>
-  <div id="modal-contato" class="modal"><div class="modal-content"><div class="modal-header"><h2>Fale Conosco</h2><button class="modal-close" onclick="closeModal('contato')">×</button></div><div class="modal-body"><div class="contact-info"><div class="contact-item"><div class="contact-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div><div><h4>Email</h4><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c2a1adacb6a3b6ad82a3a5abaeabb8a3a1b0a7a6eca1adafeca0b0">[email�protected]</a></p></div></div><div class="contact-item"><div class="contact-icon"><svg fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path></svg></div><div><h4>WhatsApp</h4><p>(11) 98765-4321</p></div></div></div><div class="contact-note"><p><strong>CNPJ:</strong> 02.038.232/0001-64</p><p><strong>Razão Social:</strong> Banco Cooperativo Sicoob S.A.</p></div></div></div></div>
-
-  <script data-cfasync="false" src="js/email-decode.min.js"></script><script>
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', function() { header.classList.toggle('scrolled', window.scrollY > 50); });
-
-    /* ====== CUSTOM SLIDER ====== */
-    (function() {
-      var sliderEl = document.getElementById('customSlider');
-      var thumbEl = document.getElementById('sliderThumb');
-      var progressEl = document.getElementById('sliderProgress');
-      var loanAmountDisplay = document.getElementById('loanAmount');
-      var installmentsDisplay = document.getElementById('installments');
-
-      if (!sliderEl || !thumbEl || !progressEl) {
-        console.error('Slider elements not found!');
-        return;
-      }
-
-      var SLIDER_MIN = 1000;
-      var SLIDER_MAX = 30000;
-      var SLIDER_STEP = 500;
-      var currentValue = 10000;
-      var isDragging = false;
-
-      function formatCurrency(value) {
-        return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 0, maximumFractionDigits: 0 });
-      }
-
-      function calculateInstallment(principal, rate, months) {
-        return principal * (rate * Math.pow(1 + rate, months)) / (Math.pow(1 + rate, months) - 1);
-      }
-
-      function snapToStep(val) {
-        return Math.round(val / SLIDER_STEP) * SLIDER_STEP;
-      }
-
-      function clamp(val, min, max) {
-        return Math.max(min, Math.min(max, val));
-      }
-
-      function getValueFromPosition(clientX) {
-        var rect = sliderEl.getBoundingClientRect();
-        var percent = (clientX - rect.left) / rect.width;
-        var raw = SLIDER_MIN + percent * (SLIDER_MAX - SLIDER_MIN);
-        return snapToStep(clamp(raw, SLIDER_MIN, SLIDER_MAX));
-      }
-
-      function updateUI() {
-        var percent = ((currentValue - SLIDER_MIN) / (SLIDER_MAX - SLIDER_MIN)) * 100;
-        progressEl.style.width = percent + '%';
-        thumbEl.style.left = percent + '%';
-        loanAmountDisplay.textContent = formatCurrency(currentValue);
-        var installment = calculateInstallment(currentValue, 0.0081, 120);
-        installmentsDisplay.textContent = '120x ' + formatCurrency(Math.round(installment));
-      }
-
-      function startDrag(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        isDragging = true;
-        thumbEl.classList.add('active');
-      }
-
-      function onMove(clientX) {
-        if (!isDragging) return;
-        currentValue = getValueFromPosition(clientX);
-        updateUI();
-      }
-
-      function stopDrag() {
-        if (isDragging) {
-          isDragging = false;
-          thumbEl.classList.remove('active');
+        function renderProducts() {
+            const featuredProducts = products.filter(product => product.featured);
+            const newArrivals = products.filter(product => product.newArrival);
+            
+            bestSellersCarousel.innerHTML = '';
+            featuredProducts.forEach(product => {
+                bestSellersCarousel.appendChild(createProductCard(product));
+            });
+            
+            newArrivalsCarousel.innerHTML = '';
+            newArrivals.forEach(product => {
+                newArrivalsCarousel.appendChild(createProductCard(product));
+            });
         }
-      }
 
-      function clickTrack(clientX) {
-        isDragging = true;
-        thumbEl.classList.add('active');
-        currentValue = getValueFromPosition(clientX);
-        updateUI();
-      }
+        function createProductCard(product) {
+            const card = document.createElement('article');
+            card.className = 'product-card';
+            const discountPercentage = Math.round((1 - product.price / product.originalPrice) * 100);
+            
+            card.innerHTML = `
+                <div class="discount-badge">${discountPercentage}%</div>
+                <div class="product-image" data-image="${product.image}">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.src='https://placehold.co/400x400/ff6fa3/white?text=Melissa'">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">${product.name}</div>
+                    <div class="product-description">${product.description}</div>
+                    <div class="price-container">
+                        <div class="current-price">R$ ${product.price.toFixed(2).replace('.',',')}</div>
+                        <div class="original-price">R$ ${product.originalPrice.toFixed(2).replace('.',',')}</div>
+                    </div>
+                    <div class="size-selector">
+                        <select class="size-select" data-id="${product.id}">
+                            <option value="">Escolha numeração</option>
+                            <option value="33">33</option><option value="34">34</option><option value="35">35</option>
+                            <option value="36">36</option><option value="37">37</option><option value="38">38</option>
+                            <option value="39">39</option><option value="40">40</option><option value="41">41</option>
+                        </select>
+                    </div>
+                    <div class="product-actions">
+                        <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}">Adicionar</button>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
 
-      // MOUSE
-      thumbEl.addEventListener('mousedown', startDrag);
-      document.addEventListener('mousemove', function(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        onMove(e.clientX);
-      });
-      document.addEventListener('mouseup', stopDrag);
-      sliderEl.addEventListener('mousedown', function(e) {
-        if (e.target === thumbEl || thumbEl.contains(e.target)) return;
-        e.preventDefault();
-        clickTrack(e.clientX);
-      });
+        function setupEventListeners() {
+            document.getElementById('cart-icon').addEventListener('click', openCart);
+            document.getElementById('close-cart').addEventListener('click', closeCart);
+            overlay.addEventListener('click', closeCart);
+            closeZoom.addEventListener('click', closeZoomModal);
+            zoomModal.addEventListener('click', (e) => { if (e.target === zoomModal) closeZoomModal(); });
+            searchInput.addEventListener('input', handleSearch);
+            categoryFilter.addEventListener('change', handleFilterChange);
+            sortFilter.addEventListener('change', handleFilterChange);
+            document.getElementById('checkout').addEventListener('click', handleCheckout);
+        }
 
-      // TOUCH
-      thumbEl.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        isDragging = true;
-        thumbEl.classList.add('active');
-      }, { passive: false });
+        function openCart(){ cartModal.classList.add('active'); overlay.classList.add('active'); }
+        function closeCart(){ cartModal.classList.remove('active'); overlay.classList.remove('active'); }
+        function openZoom(imageSrc) { zoomImage.src = imageSrc; zoomModal.classList.add('active'); }
+        function closeZoomModal() { zoomModal.classList.remove('active'); }
+        function scrollToProducts() { document.getElementById('products-section').scrollIntoView({behavior: 'smooth'}); }
 
-      sliderEl.addEventListener('touchstart', function(e) {
-        if (e.target === thumbEl || thumbEl.contains(e.target)) return;
-        e.preventDefault();
-        e.stopPropagation();
-        var touch = e.touches[0];
-        clickTrack(touch.clientX);
-      }, { passive: false });
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('add-to-cart')) {
+                const id = e.target.dataset.id;
+                const name = e.target.dataset.name;
+                const price = parseFloat(e.target.dataset.price);
+                const image = e.target.dataset.image;
+                const sizeSelect = document.querySelector(`.size-select[data-id="${id}"]`);
+                const selectedSize = sizeSelect ? sizeSelect.value : '';
+                
+                if (!selectedSize) {
+                    alert('Por favor, escolha uma numeração antes de adicionar ao carrinho.');
+                    return;
+                }
 
-      document.addEventListener('touchmove', function(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        var touch = e.touches[0];
-        onMove(touch.clientX);
-      }, { passive: false });
+                const existing = cart.find(i => i.id === id && i.size === selectedSize);
+                if (existing) { existing.qty += 1; } 
+                else { cart.push({id, name, price, image, qty: 1, size: selectedSize}); }
+                updateCartUI();
+                openCart();
+                e.target.textContent = "✓ Adicionado";
+                setTimeout(() => e.target.textContent = "Adicionar", 1200);
+            }
+            
+            if (e.target.closest('.product-image')) {
+                const imageSrc = e.target.closest('.product-image').getAttribute('data-image');
+                openZoom(imageSrc);
+            }
+        });
 
-      document.addEventListener('touchend', stopDrag);
-      document.addEventListener('touchcancel', stopDrag);
+        function updateCartUI() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            let items = 0;
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div style="text-align:center;padding:40px 20px;color:var(--text)">Seu carrinho está vazio</div>';
+            } else {
+                cart.forEach(item => {
+                    total += item.price * item.qty;
+                    items += item.qty;
+                    const div = document.createElement('div');
+                    div.className = 'cart-item';
+                    div.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/400x400/ff6fa3/white?text=Melissa'">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <div class="cart-price">R$ ${item.price.toFixed(2).replace('.',',')}</div>
+                            <div>Numeração: ${item.size}</div>
+                            <div class="quantity-controls">
+                                <button class="qty-decrease" data-id="${item.id}" data-size="${item.size}">-</button>
+                                <div style="min-width:30px;text-align:center">${item.qty}</div>
+                                <button class="qty-increase" data-id="${item.id}" data-size="${item.size}">+</button>
+                                <button class="remove-btn" data-id="${item.id}" data-size="${item.size}">Remover</button>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(div);
+                });
+            }
 
-      // INIT
-      updateUI();
-      console.log('Slider initialized OK');
-    })();
-    function openModal(modalType) { document.getElementById('modal-' + modalType).classList.add('active'); document.body.style.overflow = 'hidden'; }
-    function closeModal(modalType) { document.getElementById('modal-' + modalType).classList.remove('active'); document.body.style.overflow = ''; }
-    window.addEventListener('click', function(e) { if (e.target.classList.contains('modal')) { e.target.classList.remove('active'); document.body.style.overflow = ''; } });
-  </script>
+            cartCount.innerText = items;
+            cartTotalEl.innerText = `R$ ${total.toFixed(2).replace('.',',')}`;
 
+            document.querySelectorAll('.qty-increase').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.dataset.id;
+                    const size = btn.dataset.size;
+                    const item = cart.find(i => i.id === id && i.size === size);
+                    if (item) { item.qty += 1; updateCartUI(); }
+                });
+            });
+            
+            document.querySelectorAll('.qty-decrease').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.dataset.id;
+                    const size = btn.dataset.size;
+                    const item = cart.find(i => i.id === id && i.size === size);
+                    if (item) {
+                        if (item.qty > 1) { item.qty -= 1; } 
+                        else { const index = cart.findIndex(x => x.id === id && x.size === size); if (index >= 0) cart.splice(index, 1); }
+                        updateCartUI();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.dataset.id;
+                    const size = btn.dataset.size;
+                    const index = cart.findIndex(x => x.id === id && x.size === size);
+                    if (index >= 0) cart.splice(index, 1);
+                    updateCartUI();
+                });
+            });
+        }
 
-</body></html>
+        function handleSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) || 
+                product.description.toLowerCase().includes(searchTerm)
+            );
+            updateProductDisplay(filteredProducts);
+        }
+
+        function handleFilterChange() {
+            const category = categoryFilter.value;
+            const sort = sortFilter.value;
+            let filteredProducts = [...products];
+            if (category !== 'all') { filteredProducts = filteredProducts.filter(product => product.category === category); }
+            switch(sort) {
+                case 'newest': filteredProducts.sort((a, b) => (a.newArrival === b.newArrival) ? 0 : a.newArrival ? -1 : 1); break;
+                case 'price-low': filteredProducts.sort((a, b) => a.price - b.price); break;
+                case 'price-high': filteredProducts.sort((a, b) => b.price - a.price); break;
+            }
+            updateProductDisplay(filteredProducts);
+        }
+
+        function updateProductDisplay(filteredProducts) {
+            bestSellersCarousel.innerHTML = '';
+            newArrivalsCarousel.innerHTML = '';
+            const featuredProducts = filteredProducts.filter(product => product.featured);
+            const newArrivals = filteredProducts.filter(product => product.newArrival);
+            featuredProducts.forEach(product => { bestSellersCarousel.appendChild(createProductCard(product)); });
+            newArrivals.forEach(product => { newArrivalsCarousel.appendChild(createProductCard(product)); });
+            if (featuredProducts.length === 0) { bestSellersCarousel.innerHTML = '<div style="text-align:center;padding:40px 20px;color:var(--text)">Nenhum produto encontrado</div>'; }
+            if (newArrivals.length === 0) { newArrivalsCarousel.innerHTML = '<div style="text-align:center;padding:40px 20px;color:var(--text)">Nenhum produto encontrado</div>'; }
+        }
+
+        function handleCheckout() {
+            if (cart.length === 0) { alert('Seu carrinho está vazio. Adicione produtos antes de finalizar.'); return; }
+            window.location.href = IRONPAY_LINK;
+        }
+
+        updateCartUI();
+    </script>
+</body>
+</html>
